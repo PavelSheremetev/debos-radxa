@@ -101,7 +101,14 @@ case $MODEL in
         esac
         ;;
     ubuntu)
+        case $CPU in
+            rk3588)
+                DISTRO="jammy"
+                ;;
+            *)
         DISTRO="focal"
+                ;;
+        esac
         ;;
     *)
         echo "Unsupported model $MODEL!"
