@@ -16,7 +16,8 @@ jobs:
     steps:
       - name: Get time
         id: time
-        uses: nanzm/get-time-action@v1.1
+#        uses: nanzm/get-time-action@v1.1
+        uses: josStorer/get-current-time@v2.0.2
         with:
           format: 'YYYYMMDD-HHmm'
       - name: Create empty release
@@ -24,13 +25,13 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: ${{ steps.time.outputs.time }}
+          tag_name: ${{ steps.time.outputs.formattedTime }}
           target_commitish: main
           draft: false
     outputs:
       upload_url: ${{ steps.release.outputs.upload_url }}
       release_id: ${{ steps.release.outputs.id }}
-      tag_name: ${{ steps.time.outputs.time }}
+      tag_name: ${{ steps.time.outputs.formattedTime }}
   prepare_supported_configs:
     runs-on: ubuntu-latest
     steps:
