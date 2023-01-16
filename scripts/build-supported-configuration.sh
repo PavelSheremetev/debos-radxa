@@ -115,6 +115,9 @@ case $MODEL in
         exit 4
         ;;
 esac
-apt update
-apt --fix-broken install zstd -y
+echo update !!!
+sudo apt update -y
+echo install zstd !!!
+sudo apt --fix-broken install zstd -y
+echo build !!!
 $SCRIPTS_DIR/build.sh -c $CPU -b $BOARD -m $MODEL -d $DISTRO -v $VARIANT -a $ARCH -f $FORMAT -0
